@@ -5,6 +5,6 @@
   supabase/schema.sql protects user data.
 */
 window.LAYER_SUPABASE = {
-  url: "YOUR_SUPABASE_PROJECT_URL",
-  anonKey: "YOUR_SUPABASE_ANON_KEY"
+  url: "https://ttughuawdthmjwdmxybh.supabase.co",
+  anonKey: "sb_publishable_mKg17zAJ0a1dLM7Y7t1Oxg_3v7bgE8e"
 };
