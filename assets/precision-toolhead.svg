@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 760">
+  <defs>
+    <linearGradient id="gBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b2d31"/><stop offset=".42" stop-color="#101114"/><stop offset="1" stop-color="#050506"/>
+    </linearGradient>
+    <linearGradient id="gMetal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#54575c"/><stop offset=".18" stop-color="#c9cbd0"/><stop offset=".36" stop-color="#666970"/><stop offset=".58" stop-color="#e3e4e7"/><stop offset=".8" stop-color="#686b71"/><stop offset="1" stop-color="#2f3135"/>
+    </linearGradient>
+    <linearGradient id="gAlu" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f5f6"/><stop offset=".22" stop-color="#9ea1a7"/><stop offset=".56" stop-color="#494c51"/><stop offset="1" stop-color="#d0d2d6"/>
+    </linearGradient>
+    <linearGradient id="gBrass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7e561e"/><stop offset=".2" stop-color="#d4a84f"/><stop offset=".48" stop-color="#f0cf77"/><stop offset=".74" stop-color="#aa742d"/><stop offset="1" stop-color="#5a3916"/>
+    </linearGradient>
+    <linearGradient id="gBlock" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a9abb0"/><stop offset=".18" stop-color="#5a5c61"/><stop offset=".7" stop-color="#25272b"/><stop offset="1" stop-color="#777a80"/>
+    </linearGradient>
+    <radialGradient id="gGlow">
+      <stop offset="0" stop-color="#d8ff52" stop-opacity=".75"/><stop offset="1" stop-color="#d8ff52" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="22" stdDeviation="20" flood-color="#000" flood-opacity=".58"/></filter>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="11"/></filter>
+    <filter id="tiny" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
+  </defs>
+
+  <ellipse cx="265" cy="693" rx="110" ry="40" fill="#000" opacity=".25" filter="url(#soft)"/>
+  <g filter="url(#shadow)">
+    <!-- upper carriage / direct drive housing -->
+    <path d="M104 54h312l38 46v192l-42 54H111l-45-56V103z" fill="url(#gBody)" stroke="#404247" stroke-width="3"/>
+    <path d="M126 80h268l28 34v145l-31 37H132l-32-40V116z" fill="#15171a" stroke="#34363a" stroke-width="2"/>
+    <path d="M147 98h226l20 23v37H128v-35z" fill="url(#gMetal)" opacity=".85"/>
+    <rect x="155" y="174" width="210" height="88" rx="16" fill="#090a0c" stroke="#2c2f33"/>
+    <circle cx="260" cy="218" r="64" fill="#0d0f11" stroke="#34373b" stroke-width="5"/>
+    <circle cx="260" cy="218" r="48" fill="#16181b" stroke="#050506" stroke-width="7"/>
+    <g fill="#34373c" opacity=".95">
+      <path d="M252 172h16l8 27-16 8-16-8z"/><path d="M252 264h16l8-27-16-8-16 8z"/>
+      <path d="M214 210v16l27 8 8-16-8-16z"/><path d="M306 210v16l-27 8-8-16 8-16z"/>
+      <path d="M224 181l11-11 25 14-6 17-18 3z"/><path d="M296 255l11-11-14-25-17 6-3 18z"/>
+      <path d="M296 181l-11-11-25 14 6 17 18 3z"/><path d="M224 255l-11-11 14-25 17 6 3 18z"/>
+    </g>
+    <circle cx="260" cy="218" r="13" fill="url(#gMetal)"/>
+    <circle cx="149" cy="286" r="7" fill="#b7bac0"/><circle cx="371" cy="286" r="7" fill="#b7bac0"/>
+
+    <!-- cable bundle -->
+    <path d="M378 116c64 10 74 56 68 101s7 73 40 101" fill="none" stroke="#202226" stroke-width="17" stroke-linecap="round"/>
+    <path d="M379 116c64 10 74 56 68 101s7 73 40 101" fill="none" stroke="#4b4e54" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+    <path d="M124 120c-50 20-66 64-54 103" fill="none" stroke="#2a2c31" stroke-width="12" stroke-linecap="round"/>
+
+    <!-- heatsink / throat -->
+    <rect x="205" y="314" width="110" height="42" rx="8" fill="url(#gMetal)" stroke="#44474d"/>
+    <g>
+      <rect x="198" y="356" width="124" height="15" rx="3" fill="url(#gAlu)"/>
+      <rect x="193" y="378" width="134" height="16" rx="3" fill="url(#gAlu)"/>
+      <rect x="190" y="401" width="140" height="16" rx="3" fill="url(#gAlu)"/>
+      <rect x="194" y="424" width="132" height="16" rx="3" fill="url(#gAlu)"/>
+      <rect x="200" y="447" width="120" height="16" rx="3" fill="url(#gAlu)"/>
+    </g>
+    <rect x="239" y="462" width="42" height="58" rx="6" fill="url(#gMetal)"/>
+
+    <!-- heater block -->
+    <path d="M195 510h132l20 17v104H177V527z" fill="url(#gBlock)" stroke="#92959b" stroke-width="2"/>
+    <rect x="196" y="531" width="118" height="78" rx="8" fill="#1f2125" stroke="#4d5055"/>
+    <circle cx="218" cy="570" r="10" fill="#0b0c0e" stroke="#777a80"/>
+    <rect x="310" y="548" width="45" height="17" rx="8" fill="#71322c"/>
+    <path d="M345 557c52 0 65 24 87 45" fill="none" stroke="#9a3d31" stroke-width="7" stroke-linecap="round"/>
+    <path d="M344 568c48 3 60 27 81 47" fill="none" stroke="#282a2e" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- silicone sock lip -->
+    <path d="M180 610h166v42l-17 16H197l-17-16z" fill="#111214" stroke="#33353a" stroke-width="2"/>
+
+    <!-- brass nozzle -->
+    <path d="M226 652h68l-4 31-15 10-6 28h-18l-6-28-15-10z" fill="url(#gBrass)" stroke="#9a6a2d" stroke-width="1.5"/>
+    <path d="M251 720h18l-3 20h-12z" fill="#d0a24c"/>
+    <circle cx="260" cy="741" r="3.6" fill="#2a1a0a"/>
+  </g>
+
+  <ellipse cx="260" cy="739" rx="62" ry="44" fill="url(#gGlow)" opacity=".34" filter="url(#tiny)"/>
+  <circle cx="260" cy="741" r="3.5" fill="#f6ffd4"/>
+</svg>
