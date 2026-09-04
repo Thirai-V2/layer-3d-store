@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1050" viewBox="0 0 900 1050">
+<defs>
+ <radialGradient id="bg" cx=".42" cy=".28"><stop offset="0" stop-color="#ffffff"/><stop offset=".52" stop-color="#f3f1eb"/><stop offset="1" stop-color="#d9d6ce"/></radialGradient>
+ <linearGradient id="obj" x1="0" x2="1"><stop stop-color="#bebfba"/><stop offset=".48" stop-color="#f4f4f1"/><stop offset="1" stop-color="#888984"/></linearGradient>
+ <filter id="sh"><feDropShadow dx="0" dy="32" stdDeviation="28" flood-opacity=".22"/></filter>
+</defs>
+<rect width="900" height="1050" rx="40" fill="url(#bg)"/>
+<ellipse cx="450" cy="810" rx="270" ry="70" fill="#000" opacity=".10"/>
+<g filter="url(#sh)">
+<g transform="translate(160 300) rotate(-9 290 210)">
+ <rect x="40" y="95" width="560" height="260" rx="82" fill="#232428"/>
+ <circle cx="120" cy="225" r="48" fill="none" stroke="#d8ff52" stroke-width="20"/>
+ <text x="215" y="215" font-family="Arial" font-size="72" font-weight="800" fill="#f8f7f3">ACET</text>
+ <rect x="216" y="248" width="235" height="15" rx="7" fill="#8d6bff"/>
+ <g stroke="#74757a" opacity=".45"><path d="M190 300h310"/><path d="M190 315h310"/></g>
+</g></g>
+<rect x="62" y="62" width="136" height="31" rx="15" fill="#111"/>
+<text x="130" y="83" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#ff8f66" letter-spacing="2">3D PRINTED</text>
+<text x="62" y="964" font-family="Arial" font-size="24" fill="#111" font-weight="700">CAMPUS NAME TAG</text>
+<text x="62" y="995" font-family="Arial" font-size="12" fill="#686868" letter-spacing="2">STUDIO RENDER / REPLACE WITH REAL PRODUCT PHOTO</text>
+</svg>

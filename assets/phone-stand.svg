@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1050" viewBox="0 0 900 1050">
+<defs>
+ <radialGradient id="bg" cx=".42" cy=".28"><stop offset="0" stop-color="#ffffff"/><stop offset=".52" stop-color="#f3f1eb"/><stop offset="1" stop-color="#d9d6ce"/></radialGradient>
+ <linearGradient id="obj" x1="0" x2="1"><stop stop-color="#bfc0bb"/><stop offset=".48" stop-color="#f4f4f1"/><stop offset="1" stop-color="#888984"/></linearGradient>
+ <filter id="sh"><feDropShadow dx="0" dy="32" stdDeviation="28" flood-opacity=".22"/></filter>
+</defs>
+<rect width="900" height="1050" rx="40" fill="url(#bg)"/>
+<ellipse cx="450" cy="810" rx="270" ry="70" fill="#000" opacity=".10"/>
+<g filter="url(#sh)">
+<g transform="translate(175 210)">
+ <path d="M180 510c5-185 60-355 196-430 76-42 168 9 142 87-33 98-143 173-171 343z" fill="url(#obj)"/>
+ <path d="M180 510h375l55 94H120z" fill="#26272b"/>
+ <path d="M323 110c65-46 145-17 121 54-31 93-103 129-139 230" fill="none" stroke="#d8ff52" stroke-width="17" stroke-linecap="round" opacity=".8"/>
+ <g stroke="#777" opacity=".38"><path d="M170 505h385"/><path d="M165 493h392"/><path d="M162 481h397"/></g>
+</g></g>
+<rect x="62" y="62" width="136" height="31" rx="15" fill="#111"/>
+<text x="130" y="83" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#d8ff52" letter-spacing="2">3D PRINTED</text>
+<text x="62" y="964" font-family="Arial" font-size="24" fill="#111" font-weight="700">ARC PHONE STAND</text>
+<text x="62" y="995" font-family="Arial" font-size="12" fill="#686868" letter-spacing="2">STUDIO RENDER / REPLACE WITH REAL PRODUCT PHOTO</text>
+</svg>

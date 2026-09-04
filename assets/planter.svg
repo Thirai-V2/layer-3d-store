@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1050" viewBox="0 0 900 1050">
+<defs>
+ <radialGradient id="bg" cx=".42" cy=".28"><stop offset="0" stop-color="#ffffff"/><stop offset=".52" stop-color="#f3f1eb"/><stop offset="1" stop-color="#d9d6ce"/></radialGradient>
+ <linearGradient id="obj" x1="0" x2="1"><stop stop-color="#c8c8c3"/><stop offset=".48" stop-color="#f4f4f1"/><stop offset="1" stop-color="#888984"/></linearGradient>
+ <filter id="sh"><feDropShadow dx="0" dy="32" stdDeviation="28" flood-opacity=".22"/></filter>
+</defs>
+<rect width="900" height="1050" rx="40" fill="url(#bg)"/>
+<ellipse cx="450" cy="810" rx="270" ry="70" fill="#000" opacity=".10"/>
+<g filter="url(#sh)">
+<g transform="translate(230 190)">
+ <path d="M80 210L220 110l140 100-45 390H125z" fill="#ff8f66"/>
+ <path d="M80 210l140 70V110z" fill="#ffb08e"/>
+ <path d="M360 210l-140 70V110z" fill="#df7046"/>
+ <path d="M125 600l95-320 95 320z" fill="#ea7d54"/>
+ <path d="M218 150c-70-75-76-125-58-185M220 150c60-85 90-115 122-150M219 145c-8-94 10-138 34-176" fill="none" stroke="#356f52" stroke-width="24" stroke-linecap="round"/>
+</g></g>
+<rect x="62" y="62" width="136" height="31" rx="15" fill="#111"/>
+<text x="130" y="83" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#ff8f66" letter-spacing="2">3D PRINTED</text>
+<text x="62" y="964" font-family="Arial" font-size="24" fill="#111" font-weight="700">FOLD MINI PLANTER</text>
+<text x="62" y="995" font-family="Arial" font-size="12" fill="#686868" letter-spacing="2">STUDIO RENDER / REPLACE WITH REAL PRODUCT PHOTO</text>
+</svg>

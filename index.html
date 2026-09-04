@@ -1,427 +1,199 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="theme-color" content="#070708"/>
-  <meta name="description" content="Layer — a premium campus 3D print store and fabrication lab."/>
-  <title>LAYER — Campus 3D Print Lab</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#080809"/>
+<title>LAYER — Campus 3D Print Lab</title>
+<meta name="description" content="Premium campus 3D printed objects and custom fabrication."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <div class="boot" id="boot">
-    <div class="boot-top">
-      <span>LAYER / FABRICATION SYSTEM</span>
-      <span>ACET · 2026</span>
+<div class="noise"></div>
+<header class="site-header" id="siteHeader">
+  <a class="brand" href="#top">
+    <span class="brand-box">L</span>
+    <span class="brand-text"><b>LAYER</b><small>CAMPUS 3D LAB</small></span>
+  </a>
+  <nav class="main-nav">
+    <a href="#objects">OBJECTS</a>
+    <a href="#lab">CUSTOM LAB</a>
+    <a href="#process">PROCESS</a>
+    <a href="#pickup">PICKUP</a>
+  </nav>
+  <div class="header-right">
+    <button class="login-link" id="loginButton">LOGIN</button>
+    <button class="register-link" id="registerButton">REGISTER</button>
+    <button class="account-link" id="myLayerButton" hidden>MY LAYER <b id="userInitial">U</b></button>
+    <button class="bag-button" id="bagButton">BAG <b id="bagCount">0</b></button>
+  </div>
+</header>
+
+<main id="top">
+<section class="print-story" id="printStory">
+  <div class="print-stage">
+    <div class="stage-grid"></div>
+    <div class="glow glow-a"></div><div class="glow glow-b"></div>
+    <div class="hud hud-a"><span>PRINTER / 01</span><b>ONLINE</b></div>
+    <div class="hud hud-b"><span>LAYER HEIGHT</span><b>0.20 MM</b></div>
+    <div class="hud hud-c"><span>MATERIAL</span><b>PLA+</b></div>
+    <div class="hud hud-d"><span>SCROLL TO FABRICATE</span><b id="layerCounter">LAYER 0001</b></div>
+    <div class="rail"><span></span></div>
+    <div class="toolhead" id="printHead">
+      <div class="toolhead-glow"></div>
+      <img src="assets/precision-toolhead.svg" alt="3D printer hotend"/>
+      <span class="extrusion"></span>
     </div>
-    <div class="boot-center">
-      <div class="boot-symbol">
-        <img class="boot-toolhead" src="assets/precision-toolhead.svg" alt="3D printer hotend">
-        <span class="boot-drop"></span>
+    <div class="hero">
+      <span class="hero-kicker">DIGITAL → PHYSICAL</span>
+      <div class="hero-title">
+        <div class="word"><span class="ghost">MAKE</span><span class="ink" data-s=".03" data-e=".29">MAKE</span></div>
+        <div class="word"><span class="ghost">IDEAS</span><span class="ink" data-s=".24" data-e=".54">IDEAS</span></div>
+        <div class="word acid"><span class="ghost">PHYSICAL.</span><span class="ink" data-s=".48" data-e=".84">PHYSICAL.</span></div>
       </div>
-      <p id="bootStatus">HEATING NOZZLE</p>
-      <strong><span id="bootTemp">24</span>°C</strong>
+      <p>Campus-made objects, prototypes and custom fabrication — printed one precise layer at a time.</p>
     </div>
-    <div class="boot-bottom">
-      <div class="boot-track"><i id="bootBar"></i></div>
-      <span id="bootPct">00%</span>
+    <div class="bed"><span>X / 220</span><span>Y / 220</span><span>Z / 250</span></div>
+    <div class="scroll-note">SCROLL <i></i></div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="intro-number">01</div>
+  <div class="intro-copy">
+    <span class="eyebrow">LAYER / OBJECT CULTURE</span>
+    <h2>THE CAMPUS<br>MAKER STORE,<br><em>REIMAGINED.</em></h2>
+  </div>
+  <div class="intro-note">
+    <p>Not a shelf of plastic. A curated collection of useful, personalised and engineered objects made locally on demand.</p>
+    <a href="#objects">EXPLORE OBJECTS ↘</a>
+  </div>
+</section>
+
+<section class="objects" id="objects">
+  <div class="section-top">
+    <div><span class="eyebrow dark">02 / READY OBJECTS</span><h2>SELECT.<br><em>PRINT.</em> COLLECT.</h2></div>
+    <div class="section-note"><span><i></i> LIVE CATALOGUE</span><p>Compact product cards. Real product photography can replace the current studio renders without changing the layout.</p></div>
+  </div>
+  <div class="filterbar">
+    <div id="filters">
+      <button class="active" data-filter="ALL">ALL</button>
+      <button data-filter="DESK">DESK</button>
+      <button data-filter="CAMPUS">CAMPUS</button>
+      <button data-filter="ENGINEERING">ENGINEERING</button>
+      <button data-filter="DECOR">DECOR</button>
+    </div>
+    <span id="objectCount">06 OBJECTS</span>
+  </div>
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
+<section class="lab" id="lab">
+  <div class="lab-sticky">
+    <span class="eyebrow">03 / CUSTOM FABRICATION</span>
+    <h2>YOUR MODEL.<br><em>OUR MACHINE.</em></h2>
+    <p>Upload a model or describe what you need. We review printability, material, dimensions, finish and machine time before production.</p>
+    <div class="lab-facts">
+      <div><span>FILES</span><b>STL · 3MF · OBJ · STEP</b></div>
+      <div><span>MATERIALS</span><b>PLA+ · PETG · TPU</b></div>
+      <div><span>DELIVERY</span><b>CAMPUS PICKUP</b></div>
     </div>
   </div>
-
-  <div class="grain"></div>
-  <div class="cursor" id="cursor"><span></span></div>
-
-  <header class="site-header" id="siteHeader">
-    <a class="wordmark" href="#top">
-      <span class="wordmark-icon">L</span>
-      <span><b>LAYER</b><small>CAMPUS 3D LAB</small></span>
-    </a>
-    <nav>
-      <a href="#objects">Objects</a>
-      <a href="#lab">Custom Lab</a>
-      <a href="#process">Process</a>
-    </nav>
-    <div class="header-actions">
-      <div class="auth-actions" id="authActions">
-        <button class="auth-login" id="loginButton" type="button">LOGIN</button>
-        <button class="auth-register" id="registerButton" type="button">REGISTER</button>
-        <button class="my-layer-pill" id="myLayerButton" type="button" hidden>
-          <span>MY LAYER</span><b id="userInitial">U</b>
-        </button>
-      </div>
-      <button class="bag-pill" id="bagButton">
-        <span>BAG</span>
-        <b id="bagCount">0</b>
-      </button>
+  <form class="job-card" id="fabricationForm">
+    <div class="job-head"><span>NEW PRINT JOB</span><b><i></i> SYSTEM READY</b></div>
+    <label class="upload">
+      <input id="modelFile" type="file" accept=".stl,.3mf,.obj,.step,.stp"/>
+      <div class="upload-icon">⌁</div>
+      <div><b>DROP / SELECT 3D MODEL</b><span id="modelFileName">STL, 3MF, OBJ or STEP</span></div>
+      <strong>＋</strong>
+    </label>
+    <div class="form-grid">
+      <label><span>NAME</span><input name="name" required placeholder="Student / Faculty"/></label>
+      <label><span>DEPARTMENT</span><input name="department" required placeholder="EEE / CSE / MECH"/></label>
+      <label><span>MATERIAL</span><select name="material"><option>PLA+</option><option>PETG</option><option>TPU</option><option>Not sure</option></select></label>
+      <label><span>QUANTITY</span><input name="quantity" type="number" min="1" value="1"/></label>
     </div>
-  </header>
+    <label class="notes"><span>DIMENSIONS / COLOUR / USE / DEADLINE</span><textarea name="notes" rows="4" placeholder="Tell the fabrication desk what this object needs to do..."></textarea></label>
+    <button class="submit-job">SUBMIT FABRICATION REQUEST <b>↗</b></button>
+  </form>
+</section>
 
-  <main id="top">
-    <section class="print-story" id="printStory">
-      <div class="print-sticky">
-        <div class="machine-hud hud-tl">
-          <span>PRINTER / 01</span>
-          <b>ONLINE</b>
-        </div>
-        <div class="machine-hud hud-tr">
-          <span>LAYER HEIGHT</span>
-          <b>0.20 MM</b>
-        </div>
-        <div class="machine-hud hud-bl">
-          <span>MATERIAL</span>
-          <b>PLA+</b>
-        </div>
-        <div class="machine-hud hud-br">
-          <span>SCROLL TO FABRICATE</span>
-          <b id="layerCounter">LAYER 0001</b>
-        </div>
+<section class="process" id="process">
+  <div class="process-title"><span class="eyebrow dark">04 / HOW LAYER WORKS</span><h2>FOUR MOVES.<br><em>ONE OBJECT.</em></h2></div>
+  <div class="process-list">
+    <article><span>01</span><div><h3>Choose or upload.</h3><p>Select a ready object or send your own model.</p></div><b>↘</b></article>
+    <article><span>02</span><div><h3>We engineer the print.</h3><p>Geometry, orientation, support, material and machine time are checked.</p></div><b>↘</b></article>
+    <article><span>03</span><div><h3>The machine builds it.</h3><p>Layer-by-layer fabrication with monitoring and finishing.</p></div><b>↘</b></article>
+    <article><span>04</span><div><h3>Collect inside campus.</h3><p>Receive the ready notification and pick up the finished object.</p></div><b>↘</b></article>
+  </div>
+</section>
 
-        <div class="machine-grid"></div>
-        <div class="ambient ambient-a"></div>
-        <div class="ambient ambient-b"></div>
-
-        <div class="rail">
-          <div class="rail-line"></div>
-          <div class="rail-numbers">
-            <span>00</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span>
-          </div>
-        </div>
-
-        <div class="print-head premium-toolhead" id="printHead">
-          <div class="toolhead-aura"></div>
-          <img src="assets/precision-toolhead.svg" alt="Precision 3D printer hotend and nozzle" draggable="false">
-          <div class="nozzle-filament" id="nozzleFilament"></div>
-          <div class="nozzle-contact"></div>
-          <div class="toolhead-readout"><span>HOTEND</span><b>220°C</b></div>
-        </div>
-
-        <div class="hero-copy">
-          <span class="hero-kicker">DIGITAL → PHYSICAL</span>
-          <div class="printed-headline" aria-label="MAKE IDEAS PHYSICAL">
-            <div class="print-word">
-              <span class="outline">MAKE</span>
-              <span class="fill" data-reveal-start="0.04" data-reveal-end="0.28">MAKE</span>
-            </div>
-            <div class="print-word">
-              <span class="outline">IDEAS</span>
-              <span class="fill" data-reveal-start="0.24" data-reveal-end="0.52">IDEAS</span>
-            </div>
-            <div class="print-word accent-word">
-              <span class="outline">PHYSICAL.</span>
-              <span class="fill" data-reveal-start="0.47" data-reveal-end="0.82">PHYSICAL.</span>
-            </div>
-          </div>
-          <p class="hero-description" id="heroDescription">
-            Campus-made objects, prototypes and custom fabrication — printed one precise layer at a time.
-          </p>
-        </div>
-
-        <div class="print-bed">
-          <div class="bed-line" id="bedLine"></div>
-          <div class="bed-labels">
-            <span>X / 220</span><span>Y / 220</span><span>Z / 250</span>
-          </div>
-        </div>
-
-        <div class="scroll-cue">
-          <span>SCROLL</span>
-          <i></i>
-        </div>
-      </div>
-    </section>
-
-    <section class="manifesto">
-      <div class="manifesto-inner">
-        <span class="section-index">01 / MANIFESTO</span>
-        <p class="manifesto-text">
-          We don't sell <em>plastic things.</em><br>
-          We turn <strong>digital intent</strong> into<br>
-          objects you can <u>touch, test & use.</u>
-        </p>
-        <div class="manifesto-foot">
-          <span>DESIGN → SLICE → PRINT → FINISH</span>
-          <span>MADE INSIDE CAMPUS</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="objects-section" id="objects" aria-label="Ready to print products">
-      <div class="objects-ambient"></div>
-      <div class="objects-shell">
-        <div class="objects-heading">
-          <div>
-            <span class="section-index light-index">02 / OBJECT LIBRARY</span>
-            <h2>READY TO<br><em>PRINT.</em></h2>
-          </div>
-          <div class="objects-heading-note">
-            <span><i></i> CAMPUS COLLECTION ONLINE</span>
-            <p>Small-batch objects, utilities and engineering pieces fabricated inside the campus.</p>
-          </div>
-        </div>
-
-        <div class="vault-filterbar compact-filterbar">
-          <div class="vault-filters" id="vaultFilters">
-            <button class="active" data-vault-filter="ALL">ALL</button>
-            <button data-vault-filter="DESK">DESK</button>
-            <button data-vault-filter="CAMPUS">CAMPUS</button>
-            <button data-vault-filter="ENGINEERING">ENGINEERING</button>
-            <button data-vault-filter="DECOR">DECOR</button>
-          </div>
-          <span id="vaultCount">08 OBJECTS</span>
-        </div>
-
-        <div class="vault-grid compact-vault-grid" id="vaultGrid"></div>
-        <div class="objects-end"><span>SELECT · ADD · CAMPUS PICKUP</span><i></i><b>LAYER / OBJECTS 001—008</b></div>
-      </div>
-    </section>
-
-    <section class="lab-section" id="lab">
-      <div class="lab-copy">
-        <span class="section-index light-index">03 / CUSTOM LAB</span>
-        <h2>DON'T FIND IT.<br><em>FABRICATE IT.</em></h2>
-        <p>Upload your model or describe the object. The fabrication desk can review geometry, material, strength, print time and finishing before confirming the job.</p>
-        <div class="lab-specs">
-          <div><span>FILES</span><b>STL · 3MF · OBJ · STEP</b></div>
-          <div><span>MATERIAL</span><b>PLA+ · PETG · TPU</b></div>
-          <div><span>WORKFLOW</span><b>CAMPUS PICKUP</b></div>
-        </div>
-      </div>
-
-      <form class="fabrication-console" id="fabricationForm">
-        <div class="console-top">
-          <span>NEW FABRICATION JOB</span>
-          <div><i></i> READY</div>
-        </div>
-
-        <label class="drop-zone" id="dropZone">
-          <input id="modelFile" type="file" accept=".stl,.3mf,.obj,.step,.stp">
-          <div class="drop-model">
-            <span class="wire-cube"></span>
-            <i class="scan-line"></i>
-          </div>
-          <div>
-            <strong>DROP 3D MODEL</strong>
-            <span id="modelFileName">or click to select a fabrication file</span>
-          </div>
-          <b>+</b>
-        </label>
-
-        <div class="console-grid">
-          <label><span>NAME</span><input name="name" required placeholder="Student / Faculty"></label>
-          <label><span>DEPARTMENT</span><input name="department" required placeholder="EEE"></label>
-          <label><span>MATERIAL</span>
-            <select name="material"><option>PLA+</option><option>PETG</option><option>TPU</option><option>Not sure</option></select>
-          </label>
-          <label><span>QUANTITY</span><input name="quantity" type="number" min="1" value="1"></label>
-        </div>
-
-        <label class="console-notes"><span>JOB NOTES / DIMENSIONS</span><textarea name="notes" rows="3" placeholder="Size, colour, use case, deadline..."></textarea></label>
-
-        <button class="execute-btn" type="submit">
-          <span>SUBMIT FABRICATION REQUEST</span><b>↗</b>
-        </button>
-      </form>
-    </section>
-
-    <section class="process-section" id="process">
-      <div class="process-intro">
-        <span class="section-index">04 / WORKFLOW</span>
-        <h2>A STORE WITH<br>A <em>PRINT ENGINE.</em></h2>
-      </div>
-      <div class="process-grid">
-        <article data-step="01">
-          <div class="process-orbit"><span></span></div>
-          <h3>Choose / Upload</h3>
-          <p>Buy a listed object or submit a one-off model for fabrication.</p>
-        </article>
-        <article data-step="02">
-          <div class="process-orbit"><span></span></div>
-          <h3>Validate</h3>
-          <p>Geometry, material, supports, machine time and feasibility are checked.</p>
-        </article>
-        <article data-step="03">
-          <div class="process-orbit"><span></span></div>
-          <h3>Print</h3>
-          <p>Your object is sliced, printed, monitored and post-processed layer by layer.</p>
-        </article>
-        <article data-step="04">
-          <div class="process-orbit"><span></span></div>
-          <h3>Collect</h3>
-          <p>Receive a pickup confirmation and collect the finished object inside campus.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="metrics-section">
-      <div class="metrics-bg">LAYER</div>
-      <div class="metrics-inner">
-        <span class="section-index light-index">05 / MACHINE CULTURE</span>
-        <div class="metric">
-          <strong data-count="0.2">0.2</strong><span>MM<br>LAYER HEIGHT</span>
-        </div>
-        <div class="metric">
-          <strong data-count="3">3</strong><span>CORE<br>MATERIALS</span>
-        </div>
-        <div class="metric">
-          <strong>∞</strong><span>CUSTOM<br>POSSIBILITIES</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="final-cta">
-      <div class="final-grid"></div>
-      <div class="final-nozzle final-toolhead">
-        <img src="assets/precision-toolhead.svg" alt="Precision 3D printer hotend">
-        <span></span>
-      </div>
-      <span class="section-index">06 / START A LAYER</span>
-      <h2>IF YOU CAN<br>MODEL IT,<br><em>WE CAN PRINT IT.</em></h2>
-      <div class="final-actions">
-        <a href="#objects" class="magnetic primary-cta final-shop-button">SHOP OBJECTS <b>↗</b></a>
-        <a href="#lab" class="magnetic secondary-cta">UPLOAD YOUR MODEL <b>＋</b></a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-top">
-      <div class="footer-logo">
-        <span>L</span>
-        <div><b>LAYER</b><small>CAMPUS 3D LAB</small></div>
-      </div>
-      <p>Designed for physical ideas.<br>Fabricated inside the campus.</p>
-      <div class="footer-status"><i></i> FABRICATION DESK ONLINE</div>
+<section class="pickup" id="pickup">
+  <div class="pickup-grid"></div>
+  <div class="pickup-content">
+    <span class="eyebrow">05 / CAMPUS PICKUP</span>
+    <h2>PRINTED HERE.<br><em>READY FOR YOU.</em></h2>
+    <p>Small-batch production means less inventory, less waste and a direct link between the person who needs the object and the machine that makes it.</p>
+    <div class="pickup-stats">
+      <div><strong>0.20</strong><span>MM STANDARD<br>LAYER HEIGHT</span></div>
+      <div><strong>03</strong><span>CORE<br>MATERIALS</span></div>
+      <div><strong>∞</strong><span>CUSTOM<br>POSSIBILITIES</span></div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 LAYER / ACET</span>
-      <span>DESIGN · PRINT · USE</span>
-    </div>
-  </footer>
+  </div>
+</section>
 
-  <aside class="bag-panel" id="bagPanel">
-    <div class="bag-top">
-      <div><span>CAMPUS BAG</span><h3>Objects selected.</h3></div>
-      <button id="bagClose">×</button>
-    </div>
-    <div class="bag-items" id="bagItems"></div>
-    <div class="bag-empty" id="bagEmpty">NO OBJECTS IN THIS LAYER.</div>
-    <div class="bag-total">
-      <div><span>SUBTOTAL</span><strong id="bagSubtotal">₹0</strong></div>
-      <small>Final availability / fabrication feasibility is confirmed before production.</small>
-      <button id="orderSummaryButton">CREATE CAMPUS ORDER <b>↗</b></button>
-    </div>
-  </aside>
-  <div class="scrim" id="scrim"></div>
+<section class="end-cta">
+  <span class="eyebrow dark">06 / START A LAYER</span>
+  <h2>DON'T JUST<br>IMAGINE IT.<br><em>PRINT IT.</em></h2>
+  <div class="end-actions"><a href="#objects">SHOP OBJECTS ↗</a><a href="#lab">UPLOAD YOUR MODEL ＋</a></div>
+</section>
+</main>
 
-  <dialog class="object-modal" id="objectModal">
-    <button class="dialog-close" id="objectModalClose">×</button>
-    <div id="objectModalBody"></div>
-  </dialog>
+<footer>
+  <div class="footer-brand"><span>L</span><div><b>LAYER</b><small>CAMPUS 3D LAB</small></div></div>
+  <p>DESIGN → SLICE → PRINT → FINISH</p>
+  <div class="status"><i></i> FABRICATION DESK ONLINE</div>
+</footer>
 
-  <dialog class="auth-dialog" id="authDialog">
-    <button class="dialog-close auth-close" id="authDialogClose" type="button">×</button>
-    <div class="auth-shell">
-      <div class="auth-brand-panel">
-        <span class="section-index light-index">LAYER / IDENTITY</span>
-        <h3>YOUR OBJECTS.<br><em>YOUR LAYER.</em></h3>
-        <p>Sign in to place campus orders, track fabrication jobs and manage pickup from one workspace.</p>
-        <div class="auth-machine-lines">
-          <span>SECURE AUTH / SUPABASE</span><i></i><span>CAMPUS ACCOUNT</span>
-        </div>
-      </div>
-      <div class="auth-form-panel">
-        <div class="auth-tabs">
-          <button class="active" id="authLoginTab" type="button">LOGIN</button>
-          <button id="authRegisterTab" type="button">REGISTER</button>
-        </div>
+<aside class="bag" id="bagPanel">
+  <div class="bag-head"><div><span>CAMPUS BAG</span><h3>Your objects.</h3></div><button id="bagClose">×</button></div>
+  <div id="bagItems" class="bag-items"></div>
+  <div id="bagEmpty" class="bag-empty">NO OBJECTS SELECTED.</div>
+  <div class="bag-total"><div><span>SUBTOTAL</span><strong id="bagSubtotal">₹0</strong></div><button id="orderButton">CREATE CAMPUS ORDER ↗</button></div>
+</aside>
+<div class="scrim" id="scrim"></div>
 
-        <form class="auth-form active" id="loginForm">
-          <div class="auth-heading"><span>WELCOME BACK</span><h4>Continue your layer.</h4></div>
-          <label><span>EMAIL</span><input name="email" type="email" required placeholder="name@college.edu"></label>
-          <label><span>PASSWORD</span><input name="password" type="password" minlength="6" required placeholder="••••••••"></label>
-          <button class="auth-submit" type="submit">LOGIN <b>↗</b></button>
-        </form>
+<dialog id="productDialog" class="product-dialog"><button class="dialog-x" id="productClose">×</button><div id="productDialogBody"></div></dialog>
 
-        <form class="auth-form" id="registerForm">
-          <div class="auth-heading"><span>NEW CAMPUS ACCOUNT</span><h4>Create My LAYER.</h4></div>
-          <div class="auth-two">
-            <label><span>FULL NAME</span><input name="full_name" required placeholder="Your name"></label>
-            <label><span>REGISTER / EMPLOYEE ID</span><input name="campus_id" required placeholder="Campus ID"></label>
-          </div>
-          <div class="auth-two">
-            <label><span>USER TYPE</span><select name="user_type"><option>Student</option><option>Faculty</option><option>Staff</option></select></label>
-            <label><span>DEPARTMENT</span><input name="department" required placeholder="EEE / CSE / MECH"></label>
-          </div>
-          <div class="auth-two">
-            <label><span>YEAR</span><select name="year_of_study"><option value="">Not applicable</option><option>I</option><option>II</option><option>III</option><option>IV</option></select></label>
-            <label><span>MOBILE</span><input name="mobile" inputmode="tel" placeholder="Mobile number"></label>
-          </div>
-          <label><span>EMAIL</span><input name="email" type="email" required placeholder="name@college.edu"></label>
-          <label><span>PASSWORD</span><input name="password" type="password" minlength="6" required placeholder="Minimum 6 characters"></label>
-          <button class="auth-submit" type="submit">CREATE ACCOUNT <b>↗</b></button>
-        </form>
-        <p class="auth-message" id="authMessage"></p>
-      </div>
-    </div>
-  </dialog>
+<dialog id="authDialog" class="auth-dialog">
+<button class="dialog-x" id="authClose">×</button>
+<div class="auth-left"><span class="eyebrow">LAYER / IDENTITY</span><h3>YOUR OBJECTS.<br><em>YOUR LAYER.</em></h3><p>One account for ready objects, custom print jobs and campus pickup.</p><div class="auth-art"><span></span></div></div>
+<div class="auth-right">
+  <div class="auth-tabs"><button id="loginTab" class="active">LOGIN</button><button id="registerTab">REGISTER</button></div>
+  <form id="loginForm" class="auth-form active"><h4>Welcome back.</h4><label><span>EMAIL</span><input name="email" type="email" required/></label><label><span>PASSWORD</span><input name="password" type="password" required minlength="6"/></label><button>LOGIN <b>↗</b></button></form>
+  <form id="registerForm" class="auth-form"><h4>Create My LAYER.</h4><div class="auth-grid"><label><span>FULL NAME</span><input name="full_name" required/></label><label><span>REGISTER / EMPLOYEE ID</span><input name="campus_id" required/></label><label><span>USER TYPE</span><select name="user_type"><option>Student</option><option>Faculty</option><option>Staff</option></select></label><label><span>DEPARTMENT</span><input name="department" required/></label><label><span>YEAR</span><select name="year_of_study"><option value="">N/A</option><option>I</option><option>II</option><option>III</option><option>IV</option></select></label><label><span>MOBILE</span><input name="mobile"/></label></div><label><span>EMAIL</span><input name="email" type="email" required/></label><label><span>PASSWORD</span><input name="password" type="password" required minlength="6"/></label><button>CREATE ACCOUNT <b>↗</b></button></form>
+  <p id="authMessage" class="auth-message"></p>
+</div>
+</dialog>
 
-  <dialog class="account-dialog" id="accountDialog">
-    <button class="dialog-close account-close" id="accountDialogClose" type="button">×</button>
-    <div class="account-shell">
-      <aside class="account-sidebar">
-        <span class="section-index light-index">MY LAYER</span>
-        <div class="account-avatar" id="accountAvatar">U</div>
-        <h3 id="accountName">Campus User</h3>
-        <p id="accountMeta">LAYER MEMBER</p>
-        <nav class="account-nav">
-          <button class="active" data-account-view="overview">OVERVIEW</button>
-          <button data-account-view="orders">MY ORDERS</button>
-          <button data-account-view="prints">CUSTOM PRINTS</button>
-          <button data-account-view="profile">PROFILE</button>
-        </nav>
-        <button class="account-logout" id="logoutButton" type="button">LOG OUT ↗</button>
-      </aside>
-      <section class="account-content">
-        <div class="account-view active" data-account-panel="overview">
-          <span class="section-index">ACCOUNT / OVERVIEW</span>
-          <h3>Fabrication at a glance.</h3>
-          <div class="account-stat-grid">
-            <article><span>ORDERS</span><strong id="accountOrderCount">00</strong></article>
-            <article><span>CUSTOM JOBS</span><strong id="accountPrintCount">00</strong></article>
-            <article><span>READY TO PICKUP</span><strong id="accountPickupCount">00</strong></article>
-          </div>
-          <div class="account-feed" id="accountRecent"><p>No activity yet.</p></div>
-        </div>
-        <div class="account-view" data-account-panel="orders">
-          <span class="section-index">ACCOUNT / ORDERS</span><h3>My orders.</h3><div class="account-list" id="accountOrders"></div>
-        </div>
-        <div class="account-view" data-account-panel="prints">
-          <span class="section-index">ACCOUNT / CUSTOM PRINTS</span><h3>Fabrication jobs.</h3><div class="account-list" id="accountPrints"></div>
-        </div>
-        <div class="account-view" data-account-panel="profile">
-          <span class="section-index">ACCOUNT / PROFILE</span><h3>Campus identity.</h3><div class="profile-card" id="accountProfile"></div>
-        </div>
-      </section>
-    </div>
-  </dialog>
+<dialog id="accountDialog" class="account-dialog">
+<button class="dialog-x" id="accountClose">×</button>
+<aside><span class="eyebrow">MY LAYER</span><div class="avatar" id="accountAvatar">U</div><h3 id="accountName">Campus User</h3><p id="accountMeta">LAYER MEMBER</p><nav><button class="active" data-account="overview">OVERVIEW</button><button data-account="orders">ORDERS</button><button data-account="prints">CUSTOM PRINTS</button><button data-account="profile">PROFILE</button></nav><button id="logoutButton" class="logout">LOG OUT ↗</button></aside>
+<section>
+ <div class="account-view active" data-view="overview"><span class="eyebrow dark">ACCOUNT / OVERVIEW</span><h3>Fabrication at a glance.</h3><div class="account-stats"><article><span>ORDERS</span><b id="orderCount">00</b></article><article><span>CUSTOM JOBS</span><b id="printCount">00</b></article><article><span>READY</span><b id="readyCount">00</b></article></div><div id="recentActivity" class="activity">No activity yet.</div></div>
+ <div class="account-view" data-view="orders"><span class="eyebrow dark">ACCOUNT / ORDERS</span><h3>My orders.</h3><div id="ordersList" class="activity"></div></div>
+ <div class="account-view" data-view="prints"><span class="eyebrow dark">ACCOUNT / PRINTS</span><h3>Custom fabrication.</h3><div id="printsList" class="activity"></div></div>
+ <div class="account-view" data-view="profile"><span class="eyebrow dark">ACCOUNT / PROFILE</span><h3>Campus identity.</h3><div id="profileCard" class="activity"></div></div>
+</section>
+</dialog>
 
-  <dialog class="summary-dialog" id="summaryDialog">
-    <button class="dialog-close" id="summaryDialogClose">×</button>
-    <div class="summary-inner">
-      <span class="section-index">REQUEST SUMMARY</span>
-      <h3 id="summaryHeading">Ready to send.</h3>
-      <pre id="summaryContent"></pre>
-      <button class="copy-button" id="copyButton">COPY SUMMARY <b>↗</b></button>
-    </div>
-  </dialog>
-
-  <div class="toast" id="toast">OBJECT ADDED</div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="supabase-config.js"></script>
-  <script src="auth.js"></script>
-  <script src="script.js"></script>
+<div class="toast" id="toast">ADDED TO BAG</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="auth.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

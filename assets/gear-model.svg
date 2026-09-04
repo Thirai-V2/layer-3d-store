@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1050" viewBox="0 0 900 1050">
+<defs>
+ <radialGradient id="bg" cx=".42" cy=".28"><stop offset="0" stop-color="#ffffff"/><stop offset=".52" stop-color="#f3f1eb"/><stop offset="1" stop-color="#d9d6ce"/></radialGradient>
+ <linearGradient id="obj" x1="0" x2="1"><stop stop-color="#b8b9b4"/><stop offset=".48" stop-color="#f4f4f1"/><stop offset="1" stop-color="#888984"/></linearGradient>
+ <filter id="sh"><feDropShadow dx="0" dy="32" stdDeviation="28" flood-opacity=".22"/></filter>
+</defs>
+<rect width="900" height="1050" rx="40" fill="url(#bg)"/>
+<ellipse cx="450" cy="810" rx="270" ry="70" fill="#000" opacity=".10"/>
+<g filter="url(#sh)">
+<g transform="translate(130 185)">
+ <circle cx="320" cy="360" r="208" fill="#232429"/>
+ <circle cx="320" cy="360" r="142" fill="url(#obj)"/>
+ <circle cx="320" cy="360" r="50" fill="#25262a"/>
+ <g fill="#232429">
+  <rect x="292" y="78" width="56" height="92" rx="12"/><rect x="292" y="550" width="56" height="92" rx="12"/>
+  <rect x="38" y="332" width="92" height="56" rx="12"/><rect x="510" y="332" width="92" height="56" rx="12"/>
+ </g>
+ <circle cx="510" cy="560" r="112" fill="#d8ff52"/><circle cx="510" cy="560" r="45" fill="#222"/>
+</g></g>
+<rect x="62" y="62" width="136" height="31" rx="15" fill="#111"/>
+<text x="130" y="83" text-anchor="middle" font-family="Arial" font-size="12" font-weight="700" fill="#d8ff52" letter-spacing="2">3D PRINTED</text>
+<text x="62" y="964" font-family="Arial" font-size="24" fill="#111" font-weight="700">GEAR DEMO MODEL</text>
+<text x="62" y="995" font-family="Arial" font-size="12" fill="#686868" letter-spacing="2">STUDIO RENDER / REPLACE WITH REAL PRODUCT PHOTO</text>
+</svg>
