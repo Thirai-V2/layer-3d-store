@@ -67,6 +67,7 @@
   <div class="header-right">
     <button class="login-link" id="loginButton">LOGIN</button>
     <button class="register-link" id="registerButton">REGISTER</button>
+    <a class="admin-link" id="adminButton" href="admin.html" hidden>ADMIN</a>
     <button class="account-link" id="myLayerButton" hidden>MY LAYER <b id="userInitial">U</b></button>
     <button class="bag-button" id="bagButton">BAG <b id="bagCount">0</b></button>
   </div>
@@ -126,7 +127,10 @@
       <button data-filter="ENGINEERING">ENGINEERING</button>
       <button data-filter="DECOR">DECOR</button>
     </div>
-    <span id="objectCount">06 OBJECTS</span>
+    <div class="catalog-tools">
+      <label class="catalog-search"><span>⌕</span><input id="catalogSearch" type="search" placeholder="Search objects"/></label>
+      <span id="objectCount">06 OBJECTS</span>
+    </div>
   </div>
   <div class="product-grid" id="productGrid"></div>
 </section>
@@ -202,7 +206,7 @@
   <div class="bag-head"><div><span>CAMPUS BAG</span><h3>Your objects.</h3></div><button id="bagClose">×</button></div>
   <div id="bagItems" class="bag-items"></div>
   <div id="bagEmpty" class="bag-empty">NO OBJECTS SELECTED.</div>
-  <div class="bag-total"><div><span>SUBTOTAL</span><strong id="bagSubtotal">₹0</strong></div><button id="orderButton">CREATE CAMPUS ORDER ↗</button></div>
+  <div class="bag-total"><div><span>SUBTOTAL</span><strong id="bagSubtotal">₹0</strong></div><button id="orderButton">PROCEED TO CHECKOUT ↗</button></div>
 </aside>
 <div class="scrim" id="scrim"></div>
 
@@ -233,6 +237,7 @@
 <div class="toast" id="toast">ADDED TO BAG</div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
+<script src="catalog.js"></script>
 <script src="auth.js"></script>
 <script src="script.js"></script>
 </body>

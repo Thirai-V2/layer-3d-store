@@ -86,17 +86,11 @@
   requestAnimationFrame(frame);
 })();
 
-const products=[
-{id:"p1",name:"Arc Phone Stand",cat:"DESK",price:149,mat:"PLA+",finish:"Matte",lead:"Same day*",img:"assets/phone-stand.svg",desc:"Low-profile phone stand for study desks, lab benches and charging stations."},
-{id:"p2",name:"Modular Desk Organiser",cat:"DESK",price:229,mat:"PLA+",finish:"Fine",lead:"1 day",img:"assets/desk-organiser.svg",desc:"Geometric organiser for pens, tools, cables and small electronic components."},
-{id:"p3",name:"Gear Demo Model",cat:"ENGINEERING",price:299,mat:"PLA+",finish:"Fine",lead:"1–2 days",img:"assets/gear-model.svg",desc:"Hands-on mechanism model for classroom explanation and project demonstrations."},
-{id:"p4",name:"Campus Name Tag",cat:"CAMPUS",price:79,mat:"PLA+",finish:"Dual tone",lead:"Same day*",img:"assets/campus-keytag.svg",desc:"Personalised name or identity tag with department and campus styling."},
-{id:"p5",name:"Fold Mini Planter",cat:"DECOR",price:179,mat:"PLA+",finish:"Textured",lead:"1 day",img:"assets/planter.svg",desc:"Architectural planter with faceted printed surfaces for desk and indoor spaces."},
-{id:"p6",name:"Project Enclosure S",cat:"ENGINEERING",price:199,mat:"PETG",finish:"Standard",lead:"1–2 days",img:"assets/enclosure.svg",desc:"Compact electronics enclosure for sensors, controllers and prototype boards."}
-];
-let cart=JSON.parse(localStorage.getItem("layer-v5-cart")||"{}"),active="ALL";
+
+let products=(window.LAYER_DEFAULT_PRODUCTS||[]).map(p=>window.LayerCatalog.normalize(p));
+let cart=JSON.parse(localStorage.getItem("layer-cart")||localStorage.getItem("layer-v5-cart")||"{}"),active="ALL",searchTerm="";
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const money=n=>"₹"+Number(n).toLocaleString("en-IN");
+const money=n=>window.LayerCatalog.money(n);
 
 function progress(){
  const story=$("#printStory"), r=story.getBoundingClientRect(), max=story.offsetHeight-innerHeight;
@@ -121,35 +115,61 @@ function animateHero(){
 }
 addEventListener("scroll",animateHero,{passive:true});addEventListener("resize",animateHero);animateHero();
 
+function etaText(days){
+ const d=new Date(); d.setDate(d.getDate()+Math.max(1,Number(days||1)));
+ return d.toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});
+}
 function renderProducts(){
- const list=products.filter(p=>active==="ALL"||p.cat===active);
+ const list=products.filter(p=>(active==="ALL"||p.category===active) && `${p.name} ${p.category} ${p.material} ${p.description}`.toLowerCase().includes(searchTerm.toLowerCase()));
  $("#objectCount").textContent=String(list.length).padStart(2,"0")+" OBJECTS";
  $("#productGrid").innerHTML=list.map((p,i)=>`<article class="product-card">
-  <div class="product-media" onclick="openProduct('${p.id}')"><img src="${p.img}" alt="${p.name}"><span class="product-index">${String(i+1).padStart(2,"0")} / ${p.cat}</span><button class="product-add" onclick="event.stopPropagation();add('${p.id}')">＋</button></div>
-  <div class="product-info"><div><h3>${p.name}</h3><b>${money(p.price)}</b></div><p>${p.mat} · ${p.finish} · ${p.lead}</p><button class="product-detail" onclick="openProduct('${p.id}')">VIEW OBJECT ↗</button></div>
+  <div class="product-media" onclick="location.href='product.html?id=${encodeURIComponent(p.id)}'">
+    <img src="${p.image_url}" alt="${p.name}">
+    <span class="product-index">${String(i+1).padStart(2,"0")} / ${p.category}</span>
+    <button class="product-add" onclick="event.stopPropagation();add('${p.id}')">＋</button>
+  </div>
+  <div class="product-info">
+    <div><h3>${p.name}</h3><b>${money(p.price)}</b></div>
+    <p>${p.material||"—"} · ${p.finish||"—"}</p>
+    <p class="delivery">Estimated ready by <b>${etaText(p.estimated_delivery_days)}</b></p>
+    <p class="stock-line"><span class="${p.stock<=3?'low-stock':''}"><i></i>${p.stock>0?(p.stock<=3?`Only ${p.stock} left`:`${p.stock} available`):"Made to order"}</span></p>
+    <button class="product-detail" onclick="location.href='product.html?id=${encodeURIComponent(p.id)}'">VIEW DETAILS ↗</button>
+    <button class="buy-now" onclick="buyNow('${p.id}')">BUY NOW</button>
+  </div>
  </article>`).join("");
 }
 $$("[data-filter]").forEach(b=>b.onclick=()=>{active=b.dataset.filter;$$("[data-filter]").forEach(x=>x.classList.toggle("active",x===b));renderProducts()});
-renderProducts();
+$("#catalogSearch")?.addEventListener("input",e=>{searchTerm=e.target.value;renderProducts()});
 
-function toast(t){let el=$("#toast");el.textContent=t;el.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>el.classList.remove("show"),1400)}
+async function hydrateCatalog(){
+ const client=window.LayerAuth?.client||null;
+ products=await window.LayerCatalog.load(client);
+ renderProducts(); renderCart();
+}
+renderProducts();
+setTimeout(hydrateCatalog,50);
+
+function toast(t){let el=$("#toast");el.textContent=t;el.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>el.classList.remove("show"),1600)}
 window.add=id=>{cart[id]=(cart[id]||0)+1;save();toast("ADDED TO BAG")};
-function save(){localStorage.setItem("layer-v5-cart",JSON.stringify(cart));renderCart()}
+window.buyNow=id=>{cart[id]=(cart[id]||0)+1;save();location.href="checkout.html"};
+function save(){localStorage.setItem("layer-cart",JSON.stringify(cart));renderCart()}
 function renderCart(){
  let entries=Object.entries(cart).filter(([,q])=>q>0),count=entries.reduce((a,[,q])=>a+q,0);$("#bagCount").textContent=count;
  $("#bagEmpty").style.display=entries.length?"none":"block";
- $("#bagItems").innerHTML=entries.map(([id,q])=>{let p=products.find(x=>x.id===id);return `<div class="bag-item"><img src="${p.img}"><div><h4>${p.name}</h4><p>${p.mat} · QTY ${q}</p><button onclick="removeItem('${id}')">REMOVE</button></div><b>${money(p.price*q)}</b></div>`}).join("");
- $("#bagSubtotal").textContent=money(entries.reduce((s,[id,q])=>s+products.find(p=>p.id===id).price*q,0));
+ $("#bagItems").innerHTML=entries.map(([id,q])=>{let p=products.find(x=>x.id===id)||window.LayerCatalog.normalize({id});return `<div class="bag-item"><img src="${p.image_url}"><div><h4>${p.name||id}</h4><p>${p.material||""} · QTY ${q}</p><div class="bag-qty"><button onclick="changeQty('${id}',-1)">−</button><span>${q}</span><button onclick="changeQty('${id}',1)">＋</button></div><button onclick="removeItem('${id}')">REMOVE</button></div><b>${money((p.price||0)*q)}</b></div>`}).join("");
+ $("#bagSubtotal").textContent=money(entries.reduce((s,[id,q])=>s+(products.find(p=>p.id===id)?.price||0)*q,0));
 }
+window.changeQty=(id,d)=>{cart[id]=Math.max(0,(cart[id]||0)+d);if(!cart[id])delete cart[id];save()};
 window.removeItem=id=>{delete cart[id];save()};renderCart();
 
 const bag=$("#bagPanel"),scrim=$("#scrim");
 $("#bagButton").onclick=()=>{bag.classList.add("open");scrim.classList.add("show")};
 $("#bagClose").onclick=()=>{bag.classList.remove("open");scrim.classList.remove("show")};
 scrim.onclick=()=>{$("#bagClose").click()};
+$("#orderButton").onclick=()=>{if(!Object.keys(cart).length)return toast("YOUR BAG IS EMPTY");location.href="checkout.html"};
 
-window.openProduct=id=>{let p=products.find(x=>x.id===id),d=$("#productDialog");$("#productDialogBody").innerHTML=`<div class="product-modal-grid"><img src="${p.img}" alt="${p.name}"><div class="product-modal-copy"><span class="eyebrow dark">${p.cat} / OBJECT</span><h3>${p.name}</h3><div class="price">${money(p.price)}</div><p>${p.desc}</p><div class="spec"><div><span>MATERIAL</span><b>${p.mat}</b></div><div><span>FINISH</span><b>${p.finish}</b></div><div><span>LEAD TIME</span><b>${p.lead}</b></div><div><span>PICKUP</span><b>CAMPUS</b></div></div><button onclick="add('${p.id}');document.querySelector('#productDialog').close()">ADD TO BAG ↗</button></div></div>`;d.showModal()};
-$("#productClose").onclick=()=>$("#productDialog").close();
+window.openProduct=id=>location.href=`product.html?id=${encodeURIComponent(id)}`;
+$("#productClose")?.addEventListener("click",()=>$("#productDialog").close());
 
 $("#modelFile").onchange=e=>$("#modelFileName").textContent=e.target.files[0]?.name||"STL, 3MF, OBJ or STEP";
 $("#fabricationForm").onsubmit=async e=>{
@@ -157,6 +177,5 @@ $("#fabricationForm").onsubmit=async e=>{
  if(window.LayerAuth?.submitPrintRequest){await window.LayerAuth.submitPrintRequest(e.currentTarget,$("#modelFile").files[0]);}
  else toast("LOGIN TO SUBMIT A PRINT JOB");
 };
-$("#orderButton").onclick=async()=>{if(!Object.keys(cart).length)return toast("YOUR BAG IS EMPTY");if(window.LayerAuth?.createOrder)await window.LayerAuth.createOrder(cart,products);else toast("LOGIN TO CREATE ORDER")};
 
 $$("[data-account]").forEach(b=>b.onclick=()=>{$$("[data-account]").forEach(x=>x.classList.toggle("active",x===b));$$(".account-view").forEach(v=>v.classList.toggle("active",v.dataset.view===b.dataset.account));});

@@ -100,3 +100,35 @@ body.booting{overflow:hidden}
   .boot-metrics{grid-template-columns:1fr 1fr}.boot-metrics div:nth-child(3){display:none}
   .boot-bottomline{left:18px;right:18px}
 }
+
+/* =========================================================
+   V6 — COMMERCE / ADMIN refinements
+   ========================================================= */
+.admin-link{
+  text-decoration:none;background:transparent;color:var(--acid);
+  border:1px solid rgba(217,255,64,.42);padding:12px 14px;border-radius:999px;
+  font:500 10px var(--mono);letter-spacing:.1em
+}
+.catalog-tools{display:flex;align-items:center;gap:14px}
+.catalog-search{height:38px;width:210px;border:1px solid #d2cfc7;border-radius:999px;background:#fff;display:flex;align-items:center;padding:0 12px;gap:8px}
+.catalog-search span{font-size:15px;color:#6d6d69}
+.catalog-search input{border:0;outline:0;background:transparent;width:100%;font:500 9px var(--mono);letter-spacing:.05em}
+.stock-line{display:flex!important;align-items:center;justify-content:space-between!important;margin-top:9px}
+.stock-line i{width:7px;height:7px;border-radius:50%;background:var(--acid);border:1px solid #111;display:inline-block;margin-right:6px}
+.stock-line .low-stock i{background:var(--orange)}
+.product-info .delivery{font:500 9px var(--mono);color:#444;margin-top:8px;letter-spacing:.04em}
+.product-info .delivery b{font-size:9px}
+.buy-now{
+  display:inline-block;border:0;background:#111;color:#fff;padding:10px 13px;border-radius:999px;
+  margin:11px 0 0 8px;font:600 9px var(--mono);letter-spacing:.08em
+}
+.footer-brand b{font-size:15px;letter-spacing:.08em}
+.footer-brand small{font-size:8px}
+footer>p,.status{font-size:11px;letter-spacing:.12em}
+.status i{width:8px;height:8px}
+@media(max-width:800px){
+  .admin-link{display:none!important}
+  .catalog-tools{width:100%;justify-content:space-between;margin-top:8px}
+  .catalog-search{width:min(260px,70vw)}
+  .filterbar{align-items:flex-start;gap:14px;flex-wrap:wrap}
+}

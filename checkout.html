@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout — LAYER</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="commerce.css"></head><body>
+<header class="commerce-header"><a class="c-brand" href="index.html"><b>L</b><span>LAYER<small>CAMPUS 3D LAB</small></span></a><div class="checkout-title">SECURE CHECKOUT</div><a class="cart-link" href="index.html#objects">CONTINUE SHOPPING ↗</a></header>
+<main class="checkout-wrap">
+<section class="checkout-main">
+ <div id="authGate" class="checkout-card auth-gate" hidden><span>01 / ACCOUNT</span><h2>Sign in before checkout.</h2><p>Your address and order history are protected by your LAYER account.</p><a href="index.html">RETURN TO LAYER & LOGIN ↗</a></div>
+ <div id="checkoutContent" hidden>
+  <section class="checkout-card"><div class="card-title"><span>01 / DELIVERY</span><h2>Where should this order go?</h2></div>
+   <div class="delivery-toggle"><button class="active" data-mode="DELIVERY">DELIVERY ADDRESS</button><button data-mode="PICKUP">CAMPUS PICKUP</button></div>
+   <div id="addressArea"><div id="addressList" class="address-list"></div><button id="newAddressBtn" class="outline-btn">＋ ADD NEW ADDRESS</button>
+    <form id="addressForm" class="address-form" hidden>
+     <div class="two"><label>FULL NAME<input name="full_name" required></label><label>MOBILE<input name="mobile" required></label></div>
+     <label>ADDRESS LINE 1<input name="address_line1" required placeholder="Building / house / street"></label>
+     <label>ADDRESS LINE 2<input name="address_line2" placeholder="Area / locality"></label>
+     <div class="two"><label>CITY<input name="city" required></label><label>STATE<input name="state" value="Tamil Nadu" required></label></div>
+     <div class="two"><label>PIN CODE<input name="postal_code" required></label><label>LANDMARK<input name="landmark"></label></div>
+     <label>ADDRESS TYPE<select name="address_type"><option>Home</option><option>Hostel</option><option>Office</option><option>Campus</option></select></label>
+     <button>SAVE ADDRESS</button>
+    </form>
+   </div>
+   <div id="pickupArea" class="pickup-option" hidden><b>ACET CAMPUS PICKUP</b><p>Collect after the order status changes to READY FOR PICKUP. The admin can update the pickup desk details in order notes.</p></div>
+  </section>
+  <section class="checkout-card"><div class="card-title"><span>02 / COUPON</span><h2>Apply an offer.</h2></div><div class="coupon-box"><input id="couponInput" placeholder="Enter coupon code"><button id="applyCoupon">APPLY</button></div><p id="couponMessage" class="coupon-msg"></p></section>
+  <section class="checkout-card"><div class="card-title"><span>03 / PAYMENT</span><h2>Choose payment.</h2></div><div id="paymentOptions" class="payment-options"></div></section>
+ </div>
+</section>
+<aside class="order-summary"><span>YOUR ORDER</span><div id="summaryItems"></div><div class="price-lines"><div><span>Subtotal</span><b id="subtotal">₹0</b></div><div><span>Discount</span><b id="discount">− ₹0</b></div><div class="grand"><span>Order total</span><b id="total">₹0</b></div></div><button id="placeOrder">PLACE ORDER ↗</button><small>Final amount is recalculated securely by the server before the order is created.</small></aside>
+</main>
+<dialog id="successDialog" class="success-dialog"><div><span>ORDER CONFIRMED</span><h2 id="successOrder">LYR-</h2><p id="successText">Your order has been placed.</p><a id="paymentLinkBtn" href="#" target="_blank" hidden>OPEN PAYMENT LINK ↗</a><a href="index.html">RETURN TO LAYER</a></div></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="catalog.js"></script><script src="checkout.js"></script>
+</body></html>
