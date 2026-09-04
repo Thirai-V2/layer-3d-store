@@ -11,7 +11,47 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css"/>
 </head>
-<body>
+<body class="booting">
+
+<div class="machine-boot" id="machineBoot" aria-label="3D printer startup sequence">
+  <div class="boot-grid"></div>
+  <div class="boot-topline">
+    <span>LAYER / FABRICATION SYSTEM</span>
+    <span>ACET · CAMPUS 3D LAB</span>
+  </div>
+
+  <div class="boot-machine">
+    <div class="boot-rail">
+      <span class="boot-rail-line"></span>
+      <div class="boot-ticks">
+        <span>00</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span>
+      </div>
+    </div>
+
+    <div class="boot-head" id="bootHead">
+      <div class="boot-aura"></div>
+      <img src="assets/precision-toolhead.svg" alt="3D printer hotend startup"/>
+      <span class="boot-filament" id="bootFilament"></span>
+    </div>
+  </div>
+
+  <div class="boot-console">
+    <span class="boot-label">MACHINE STARTUP</span>
+    <p id="bootStatus">HEATING NOZZLE</p>
+    <strong><span id="bootTemp">24</span><small>°C</small></strong>
+    <div class="boot-metrics">
+      <div><span>HOTEND</span><b id="bootHotend">24°C</b></div>
+      <div><span>BED</span><b id="bootBed">24°C</b></div>
+      <div><span>AXES</span><b id="bootAxes">STANDBY</b></div>
+    </div>
+  </div>
+
+  <div class="boot-bottomline">
+    <div class="boot-progress"><i id="bootBar"></i></div>
+    <span id="bootPct">00%</span>
+  </div>
+</div>
+
 <div class="noise"></div>
 <header class="site-header" id="siteHeader">
   <a class="brand" href="#top">

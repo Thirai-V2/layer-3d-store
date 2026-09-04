@@ -1,3 +1,91 @@
+
+// =========================================================
+// V5.1 — MACHINE BOOT / HEAT + HOMING SEQUENCE
+// =========================================================
+(function machineBoot(){
+  const boot=document.getElementById("machineBoot");
+  if(!boot) return;
+
+  const head=document.getElementById("bootHead");
+  const temp=document.getElementById("bootTemp");
+  const hotend=document.getElementById("bootHotend");
+  const bed=document.getElementById("bootBed");
+  const axes=document.getElementById("bootAxes");
+  const status=document.getElementById("bootStatus");
+  const bar=document.getElementById("bootBar");
+  const pct=document.getElementById("bootPct");
+  const filament=document.getElementById("bootFilament");
+
+  const clamp01=v=>Math.max(0,Math.min(1,v));
+  const ease=t=>1-Math.pow(1-t,3);
+  const duration=2850;
+  let start=null;
+
+  function frame(ts){
+    if(!start) start=ts;
+    const p=clamp01((ts-start)/duration);
+    const e=ease(p);
+
+    bar.style.width=(e*100)+"%";
+    pct.textContent=String(Math.floor(e*100)).padStart(2,"0")+"%";
+
+    // Phase 1: real startup feeling — heat hotend from ambient to 220°C.
+    if(p < .58){
+      const q=ease(p/.58);
+      const nozzle=Math.round(24+(220-24)*q);
+      const bedT=Math.round(24+(60-24)*Math.min(1,q*1.15));
+      temp.textContent=nozzle;
+      hotend.textContent=nozzle+"°C";
+      bed.textContent=bedT+"°C";
+      axes.textContent="STANDBY";
+      status.textContent="HEATING NOZZLE";
+      head.style.left=(16 + Math.sin(p*32)*.45)+"%";
+      head.style.top="calc(31% - 91px)";
+      filament.style.opacity=.12;
+    }
+    // Phase 2: home X — head travels to the left stop and then sweeps right.
+    else if(p < .78){
+      const q=(p-.58)/.20;
+      temp.textContent="220"; hotend.textContent="220°C"; bed.textContent="60°C";
+      status.textContent="HOMING X AXIS";
+      axes.textContent="X / HOMING";
+      head.style.left=(12 + 70*q)+"%";
+      head.style.top="calc(31% - 91px)";
+      filament.style.opacity=.18;
+    }
+    // Phase 3: Y/Z calibration — return toward centre and make a subtle Z drop.
+    else if(p < .92){
+      const q=(p-.78)/.14;
+      temp.textContent="220"; hotend.textContent="220°C"; bed.textContent="60°C";
+      status.textContent=q<.52 ? "HOMING Y AXIS" : "CALIBRATING Z";
+      axes.textContent=q<.52 ? "Y / HOMING" : "Z / CAL";
+      head.style.left=(82 - 34*q)+"%";
+      head.style.top=`calc(31% - ${91-18*q}px)`;
+      filament.style.opacity=.35;
+    }
+    // Phase 4: ready.
+    else{
+      temp.textContent="220"; hotend.textContent="220°C"; bed.textContent="60°C";
+      status.textContent="SYSTEM READY";
+      axes.textContent="XYZ / READY";
+      head.style.left="50%";
+      head.style.top="calc(31% - 73px)";
+      filament.style.opacity=.8;
+    }
+
+    if(p<1){
+      requestAnimationFrame(frame);
+    }else{
+      setTimeout(()=>{
+        boot.classList.add("done");
+        document.body.classList.remove("booting");
+        setTimeout(()=>boot.remove(),1000);
+      },320);
+    }
+  }
+  requestAnimationFrame(frame);
+})();
+
 const products=[
 {id:"p1",name:"Arc Phone Stand",cat:"DESK",price:149,mat:"PLA+",finish:"Matte",lead:"Same day*",img:"assets/phone-stand.svg",desc:"Low-profile phone stand for study desks, lab benches and charging stations."},
 {id:"p2",name:"Modular Desk Organiser",cat:"DESK",price:229,mat:"PLA+",finish:"Fine",lead:"1 day",img:"assets/desk-organiser.svg",desc:"Geometric organiser for pens, tools, cables and small electronic components."},
