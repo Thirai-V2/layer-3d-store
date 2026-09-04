@@ -6,5 +6,5 @@
 */
 window.LAYER_SUPABASE = {
   url: "https://ttughuawdthmjwdmxybh.supabase.co",
-  anonKey: "sb_publishable_mKg17zAJ0a1dLM7Y7t1Oxg_3v7bgE8e"
+  anonKey: "sb_publishable_eAyE7sZJBiBtIRi06m_Ktg_93NLtqpj"
 };
